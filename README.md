@@ -14,14 +14,14 @@ Built for the **Meru Technosoft Full Stack Developer screening assignment**.
 
 ## Screenshots
 
-| Login | 
-|---|---|
+## Login  
+
 <img width="1893" height="922" alt="image" src="https://github.com/user-attachments/assets/4b4fe3be-42e3-4f14-a3c9-e32b5d90e71b" />
 
-| dashboard |
+## dashboard 
 <img width="1902" height="912" alt="image" src="https://github.com/user-attachments/assets/87551899-e305-4223-ad5c-30dc0c6579d6" />
 
-| Add lead | Delete confirmation |
+## Add lead 
 <img width="1847" height="892" alt="image" src="https://github.com/user-attachments/assets/49de3861-63a9-4527-85eb-6c5962bd3d6b" />
 
 ## Features
