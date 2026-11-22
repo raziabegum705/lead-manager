@@ -25,8 +25,12 @@ Built for the **Meru Technosoft Full Stack Developer screening assignment**.
 ### Add lead
 <img width="1847" height="892" alt="Add lead form" src="https://github.com/user-attachments/assets/49de3861-63a9-4527-85eb-6c5962bd3d6b" />
 
-### More screens
+### list of leads
 <img width="1867" height="906" alt="App screen" src="https://github.com/user-attachments/assets/b7f3b666-e47c-4172-a460-3dd3752c9294" />
+
+### Delete lead
+<img width="1803" height="838" alt="image" src="https://github.com/user-attachments/assets/ecd3c9b0-4501-4f31-8640-faa8521410ed" />
+
 
 ## Features
 
