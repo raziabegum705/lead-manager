@@ -6,21 +6,27 @@ Built for the **Meru Technosoft Full Stack Developer screening assignment**.
 
 | | |
 |---|---|
-| **Live demo** | https://your-app.vercel.app |
-| **API** | https://your-api.onrender.com/api/health |
+| **Live app** | https://lead-manager-three-tau.vercel.app/ |
+| **Demo login** | email: `ruhi@gmail.com` · password: `ruhi786` (or create your own account) |
+| **Demo video** | https://drive.google.com/file/d/1oWc3hctNNPOCzPlUkstWzkvNZ4OJLjGo/view?usp=drive_link |
+| **API health check** | https://lead-manager-production-dcaeb249.up.railway.app/api/health |
 | **Repository** | https://github.com/raziabegum705/lead-manager |
 
-> The API runs on Render's free plan, which sleeps when idle. The first request after a quiet period can take up to a minute. Please wait for the first login or signup to finish.
+> The API runs on Railway's free plan, which can sleep when idle. The first request after a quiet period can take up to a minute. Please wait for the first login or signup to finish.
 
 ## Screenshots
 
-| Login | Dashboard |
-|---|---|
-| ![Login page](screenshots/login.png) | ![Dashboard with charts and leads table](screenshots/dashboard.png) |
+### Login
+<img width="1893" height="922" alt="Login page" src="https://github.com/user-attachments/assets/4b4fe3be-42e3-4f14-a3c9-e32b5d90e71b" />
 
-| Add lead | Delete confirmation |
-|---|---|
-| ![Add lead form](screenshots/add-lead.png) | ![Delete confirmation dialog](screenshots/delete-confirm.png) |
+### Dashboard
+<img width="1886" height="905" alt="Dashboard with charts and leads table" src="https://github.com/user-attachments/assets/ddde61c8-0544-428a-84c3-181056640a19" />
+
+### Add lead
+<img width="1847" height="892" alt="Add lead form" src="https://github.com/user-attachments/assets/49de3861-63a9-4527-85eb-6c5962bd3d6b" />
+
+### More screens
+<img width="1867" height="906" alt="App screen" src="https://github.com/user-attachments/assets/b7f3b666-e47c-4172-a460-3dd3752c9294" />
 
 ## Features
 
@@ -38,7 +44,7 @@ Built for the **Meru Technosoft Full Stack Developer screening assignment**.
 - Pagination and column sorting (name, company, status, date added)
 - Dashboard with a **donut chart** (share of leads per stage) and a **bar chart** (leads per status). Click a slice or bar to filter the table
 - Automated API tests (Jest + Supertest)
-- Deployed: Vercel (frontend), Render (API), MongoDB Atlas (database)
+- Deployed: Vercel (frontend), Railway (API), MongoDB Atlas (database)
 
 **UI**
 - Clean SaaS-style design with a navy header and sand-coloured cards
@@ -54,13 +60,12 @@ Built for the **Meru Technosoft Full Stack Developer screening assignment**.
 | Database | MongoDB Atlas + Mongoose | Flexible schema; indexes defined in the model |
 | Auth | JWT + bcryptjs | Stateless login, hashed passwords |
 | Tests | Jest, Supertest, mongodb-memory-server | Tests run without a real database |
-| Hosting | Vercel + Render | Free tiers, simple Git-based deploys |
+| Hosting | Vercel + Railway | Free tiers, simple Git-based deploys |
 
 ## Folder structure
 
 ```
 lead-manager/
-├── screenshots/                 images used in this README
 ├── client/                      React app (Vite)
 │   ├── vercel.json              makes page refreshes work on Vercel
 │   └── src/
@@ -119,9 +124,9 @@ JWT_SECRET=a_long_random_string
 CLIENT_URL=http://localhost:5173
 ```
 
-**`client/.env`** (production only)
+**Vercel (production only)**
 ```
-VITE_API_URL=https://your-api.onrender.com/api
+VITE_API_URL=https://your-api.up.railway.app/api
 ```
 
 Secrets are never committed. Only the `.env.example` files are in the repo.
@@ -141,40 +146,43 @@ Deploy in this order: database, API, frontend. Then link the frontend and API.
 
 ### 1. Database: MongoDB Atlas
 1. Create a free cluster, then a database user (Database Access).
-2. Under **Network Access**, allow `0.0.0.0/0`. Render's free plan has no fixed IP address.
+2. Under **Network Access**, allow `0.0.0.0/0`, because Railway doesn't use a fixed IP address.
 3. Click **Connect → Drivers** and copy the connection string. Add the database name before the `?`:
    `mongodb+srv://USER:PASSWORD@cluster.mongodb.net/lead-manager?retryWrites=true&w=majority`
 
-### 2. API: Render
-1. **New → Web Service**, then connect this GitHub repository.
-2. Settings:
-   - **Root Directory:** `server`
-   - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
-3. Add environment variables:
+### 2. API: Railway
+1. **New Project → Deploy from GitHub repo**, then pick this repository.
+2. Open the service's **Settings** and set:
+   - **Root Directory:** `/server`
+   - Start command: leave empty (it runs `npm start` from `server/package.json`)
+3. Open **Variables** and add:
    - `MONGODB_URI` = your Atlas connection string
    - `JWT_SECRET` = a long random string
    - `CLIENT_URL` = your Vercel URL (add it after step 3; for now use a placeholder)
-4. Deploy. Check `https://your-api.onrender.com/api/health`. It should return `{"status":"ok"}`.
+
+   `PORT` is set by Railway automatically.
+4. Under **Settings → Networking**, click **Generate Domain**.
+5. Open `https://your-api.up.railway.app/api/health`. It should return `{"status":"ok"}`.
 
 ### 3. Frontend: Vercel
 1. **Add New → Project**, then import this repository.
 2. Settings:
    - **Root Directory:** `client`
    - **Framework Preset:** Vite (build command `npm run build`, output `dist`)
-3. Add the environment variable `VITE_API_URL` = `https://your-api.onrender.com/api` (include `/api`, no trailing slash).
+3. Add the environment variable `VITE_API_URL` = `https://your-api.up.railway.app/api` (include `/api`, no trailing slash).
 4. Deploy and copy the Vercel URL.
 
 ### 4. Connect them
-Go back to Render, set `CLIENT_URL` to the exact Vercel URL (for example `https://lead-manager.vercel.app`, with no trailing slash), and redeploy. Without this the browser blocks requests with a CORS error.
+Go back to Railway, set `CLIENT_URL` to the exact Vercel URL (for example `https://lead-manager-three-tau.vercel.app`, with no trailing slash), and let it redeploy. Without this the browser blocks requests with a CORS error. If you change `VITE_API_URL` later, redeploy Vercel so the new value is built in.
 
 ### Troubleshooting
 | Problem | Fix |
 |---|---|
-| "Cannot reach the server" | The Render API is waking up (wait a minute and retry), or `VITE_API_URL` is wrong. Redeploy Vercel after changing it. |
-| CORS error in the browser console | `CLIENT_URL` on Render doesn't match the Vercel URL exactly |
+| "Cannot reach the server" | The Railway API is waking up (wait a minute and retry), or `VITE_API_URL` is wrong or wasn't redeployed on Vercel |
+| CORS error in the browser console | `CLIENT_URL` on Railway doesn't match the Vercel URL exactly |
 | 404 when refreshing a page on Vercel | `client/vercel.json` is missing |
-| "Failed to start" in Render logs | Wrong `MONGODB_URI`, or Atlas Network Access doesn't allow `0.0.0.0/0` |
+| Build fails on Railway | Root Directory isn't set to `/server` |
+| "Failed to start" in Railway logs | Wrong `MONGODB_URI`, or Atlas Network Access doesn't allow `0.0.0.0/0` |
 
 ## API
 
