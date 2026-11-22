@@ -7,7 +7,7 @@ Built for the **Meru Technosoft Full Stack Developer screening assignment**.
 | | |
 |---|---|
 | **Live demo** | https://drive.google.com/file/d/1oWc3hctNNPOCzPlUkstWzkvNZ4OJLjGo/view?usp=drive_link |
-| **Live link** | https://lead-manager-three-tau.vercel.app/  try with **email:ruhi@gmail.com**  **password:ruhi786** |
+| **Live link** | https://lead-manager-three-tau.vercel.app/  try with **email:** ruhi@gmail.com  **password:** ruhi786 |
 | **Repository** | https://github.com/raziabegum705/lead-manager |
 
 > The API runs on Railways's free plan, which sleeps when idle. The first request after a quiet period can take up to a minute. Please wait for the first login or signup to finish.
