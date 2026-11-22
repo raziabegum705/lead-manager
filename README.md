@@ -6,11 +6,10 @@ Built for the **Meru Technosoft Full Stack Developer screening assignment**.
 
 | | |
 |---|---|
-| **Live demo** | https://your-app.vercel.app |
-| **API** | https://your-api.onrender.com/api/health |
+| **Live demo** | https://lead-manager-three-tau.vercel.app/ |
 | **Repository** | https://github.com/raziabegum705/lead-manager |
 
-> The API runs on Render's free plan, which sleeps when idle. The first request after a quiet period can take up to a minute. Please wait for the first login or signup to finish.
+> The API runs on Railways's free plan, which sleeps when idle. The first request after a quiet period can take up to a minute. Please wait for the first login or signup to finish.
 
 ## Screenshots
 
@@ -62,7 +61,7 @@ Built for the **Meru Technosoft Full Stack Developer screening assignment**.
 | Database | MongoDB Atlas + Mongoose | Flexible schema; indexes defined in the model |
 | Auth | JWT + bcryptjs | Stateless login, hashed passwords |
 | Tests | Jest, Supertest, mongodb-memory-server | Tests run without a real database |
-| Hosting | Vercel + Render | Free tiers, simple Git-based deploys |
+| Hosting | Vercel + railway | Free tiers, simple Git-based deploys |
 
 ## Folder structure
 
